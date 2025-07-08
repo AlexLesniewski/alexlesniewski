@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alex Leśniewski</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #a75e5b;         /* dusty‑rose background */
+      --text-dark: #8e4d45;  /* darker red for text */
+      --accent: #e7b87d;     /* pale yellow accent */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Syncopate', sans-serif;
+    }
+    body {
+      display: flex;
+      width: max-content;
+      height: 100vh;
+    }
+
+    /* EVERY SECTION */
+    section {
+      flex-shrink: 0;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* FIRST PANEL */
+    section:first-child {
+      background: var(--bg);
+      color: var(--text-dark);
+    }
+
+    /* Top headline – single line, flush “?” */
+    .headline {
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      text-transform: lowercase;
+      white-space: nowrap;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: baseline;
+    }
+    .headline .mark {
+      color: var(--accent);
+      margin-left: 0.05em;  /* very tight spacing */
+      font-size: 2.1rem;
+    }
+
+    /* Group name.svg + centered nav, left of circle */
+    .header-group {
+      position: absolute;
+      right: calc(10% + 150px);
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+    .header-group img.name-logo {
+      height: 12rem;   /* larger logo */
+margin-right: 8em;
+      display: block;
+    }
+    .header-group nav {
+margin-right: 8em;
+      margin-top: 1rem;
+      display: flex;
+      gap: 2rem;
+    }
+    .header-group nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Yellow circle */
+    .back-circle {
+      position: absolute;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+      height: 300px;
+      background: var(--accent);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    /* Portrait */
+    .portrait {
+      position: absolute;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      max-height: 90vh;
+      z-index: 2;
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      bottom: 2%;
+      width: 100%;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- FIRST SECTION -->
+  <section>
+    <h1 class="headline">
+      i sell in a six‑week frenzy
+<a href="questions.html" class="mark">?</a>
+    </h1>
+
+    <div class="header-group">
+      <img src="name.svg" alt="Leśniewski" class="name-logo">
+      <nav>
+        <a href="#linguistics">Linguistics</a>
+        <a href="#crosswords">Crosswords</a>
+        <a href="#art">Art</a>
+        <a href="#music">Music</a>
+        <a href="#writing">Writing</a>
+      </nav>
+    </div>
+
+    <div class="back-circle"></div>
+    <img src="guy.png" alt="Portrait" class="portrait">
+
+    <div class="footer">
+      Alex Lesniewski ©
+    </div>
+  </section>
+
+  <!-- ADDITIONAL PANELS FOR HORIZONTAL SCROLL -->
+  <section style="background:#8e4d45;"></section>
+  <section style="background:#a75e5b;"></section>
+  <section style="background:#8e4d45;"></section>
+  <section style="background:#a75e5b;"></section>
+
+  <script>
+    let scrollVelocity = 0;
+    const friction = 0.95;
+
+    function animateScroll() {
+      if (Math.abs(scrollVelocity) > 0.5) {
+        window.scrollBy(scrollVelocity, 0);
+        scrollVelocity *= friction;
+        requestAnimationFrame(animateScroll);
+      }
+    }
+
+    window.addEventListener('wheel', event => {
+      event.preventDefault();
+      scrollVelocity += event.deltaY * 0.1;
+      requestAnimationFrame(animateScroll);
+    }, { passive: false });
+
+    window.addEventListener('keydown', event => {
+      if (["ArrowRight","ArrowDown"].includes(event.key)) {
+        scrollVelocity += 30;
+        requestAnimationFrame(animateScroll);
+      } else if (["ArrowLeft","ArrowUp"].includes(event.key)) {
+        scrollVelocity -= 30;
+        requestAnimationFrame(animateScroll);
+      }
+    });
+  </script>
+</body>
+</html>
