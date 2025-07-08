@@ -5,194 +5,7 @@
   <title>Questions</title>
   <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-dark: #2d2d2d;
-      --grey: #323232;
-      --darker-grey: #2a2a2a;
-      --white: #ffffff;
-      --green: #00ee3b;
-      --yellow: #e9ec54;
-      --purple: #b387ff;
-      --input-bg: #ffffff;
-      --input-text: #000000;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Syncopate', sans-serif;
-      font-weight: 700;
-    }
-
-    body {
-      background: var(--bg-dark);
-      color: var(--white);
-      padding: 2rem;
-      margin: 0;
-    }
-
-    .container {
-      max-width: 100%;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-    }
-
-    header .logo {
-      font-size: 2.5rem;
-    }
-
-    header .logo span.green {
-      color: var(--green);
-    }
-
-    header .search {
-      position: relative;
-      margin-right: 4rem;
-      width: 220px;
-    }
-
-    header .search input {
-      width: 100%;
-      padding: 0.5rem 2.5rem 0.5rem 2.5rem;
-      border-radius: 1.5rem;
-      border: none;
-      font-size: 1rem;
-      background: var(--input-bg);
-      color: var(--input-text);
-      white-space: normal;
-    }
-
-    header .search img.search-icon {
-      position: absolute;
-      left: 0.8rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-    }
-
-    /* Ask form */
-    .ask-form {
-      background: var(--darker-grey);
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      margin-bottom: 2rem;
-      white-space: normal;
-    }
-
-    .ask-form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-    }
-
-    .ask-form .field {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .ask-form input[type="text"] {
-      flex: 1;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      border: none;
-      font-size: 1rem;
-      background: var(--input-bg);
-      color: var(--input-text);
-      white-space: normal;
-    }
-
-    .ask-form button {
-      padding: 0.5rem 1.5rem;
-      background: var(--green);
-      border: none;
-      border-radius: 1rem;
-      color: var(--input-text);
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    /* Entries list */
-    .entries {
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .entry {
-      margin-bottom: 3rem;
-      white-space: normal;
-    }
-
-    .entry .time {
-      color: var(--yellow);
-      font-size: 0.9rem;
-      display: inline;
-      margin-right: 0.5rem;
-      vertical-align: middle;
-      white-space: nowrap;
-    }
-
-    .entry .question {
-      color: var(--purple);
-      font-size: 0.9rem;
-      display: inline;
-      white-space: normal;
-      vertical-align: middle;
-    }
-
-    .entry .answer {
-      color: var(--white);
-      font-size: 1rem;
-      white-space: pre-wrap;
-      margin-top: 0.5rem;
-      display: block;
-      text-indent: 1em;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      background: var(--darker-grey);
-      padding: 1rem;
-      margin-top: auto;
-      position: fixed;
-      bottom: 0;
-    }
-
-    footer a {
-      color: var(--green);
-      text-decoration: underline;
-      font-weight: 700;
-      white-space: normal;
-    }
-
-    /* Home icon */
-    .home-link {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 32px;
-      height: 32px;
-    }
-
-    .home-link img {
-      width: 100%;
-      height: 100%;
-    }
+    /* … your existing CSS … */
   </style>
 </head>
 <body>
@@ -204,9 +17,7 @@
 
     <!-- Header -->
     <header>
-      <div class="logo">
-        ue<span class="green">Q</span>stions
-      </div>
+      <div class="logo">ue<span class="green">Q</span>stions</div>
       <div class="search">
         <input type="text" id="searchInput" placeholder="search…" />
         <img src="search.png" class="search-icon" onclick="handleSearch()" alt="Search">
@@ -214,7 +25,7 @@
     </header>
 
     <!-- Ask form -->
-    <form class="ask-form" onsubmit="return handleAsk(event)">
+    <form class="ask-form">
       <label for="qfield">ask a question:</label>
       <div class="field">
         <input id="qfield" type="text" placeholder="type your question…">
@@ -224,21 +35,7 @@
 
     <!-- Submitted entries -->
     <div class="entries" id="entries">
-      <div class="entry">
-        <span class="time">6.27.25 9:43 pm</span>
-        <div class="question">is your pants a pants?</div>
-        <div class="answer">sort of, even if that trips slightly over plurals in english. which i certainly dont mind by the way</div>
-      </div>
-      <div class="entry">
-        <span class="time">6.27.25 9:43 pm</span>
-        <div class="question">are cats secretly small tigers?</div>
-        <div class="answer">maybe, depending how you define tiger.</div>
-      </div>
-      <div class="entry">
-        <span class="time">6.27.25 9:43 pm</span>
-        <div class="question">is the sky green?</div>
-        <div class="answer">not usually, unless you’re somewhere weird.</div>
-      </div>
+      <!-- existing entries… -->
     </div>
 
     <!-- Footer -->
@@ -248,62 +45,47 @@
   </div>
 
   <script>
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyjGkJvxhujoZWoUKrHV70pwFPPczBn1LVtefzrvI_S0CLPaAg0GYESIVAbUvBgrEYc/exec';
+    const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyjGkJvxhujoZWoUKrHV70pwFPPczBn1LVtefzrvI_S0CLPaAg0GYESIVAbUvBgrEYc/exec';
 
-  // helper to format time if you want to inject entries later:
-  function formatTime(date) {
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const dd = String(date.getDate()).padStart(2, '0');
-    const yy = String(date.getFullYear() % 100).padStart(2, '0');
-    let hh = date.getHours();
-    const min = String(date.getMinutes()).padStart(2, '0');
-    const ampm = hh >= 12 ? 'pm' : 'am';
-    hh = hh % 12 || 12;
-    return `${mm}.${dd}.${yy} ${hh}:${min} ${ampm}`;
-  }
-
-  async function handleAsk(e) {
-    e.preventDefault();
-    const qField = document.getElementById('qfield');
-    const question = qField.value.trim();
-    if (!question) return;
-
-    try {
-      const res = await fetch(WEBAPP_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question })
-      });
-      const { result } = await res.json();
-      if (result !== 'success') throw new Error('submission failed');
-
-      alert('thanks for your submission!');
-      qField.value = '';
-    } catch (err) {
-      console.error(err);
-      alert('Something went wrong — please try again.');
-    }
-  }
-
-  function handleSearch() {
-    const query = document.getElementById('searchInput').value.toLowerCase().trim();
-    document.querySelectorAll('.entry').forEach(entry => {
-      entry.style.display = entry.innerText.toLowerCase().includes(query) || !query
-        ? 'block'
-        : 'none';
-    });
-  }
-
-  // Wire up events **after** the DOM is ready
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('.ask-form').addEventListener('submit', handleAsk);
-    document.getElementById('searchInput').addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        handleSearch();
+    // JSON-P callback
+    function handleResponse(data) {
+      if (data.result === 'success') {
+        alert('thanks for your submission!');
+        document.getElementById('qfield').value = '';
+      } else {
+        alert('submission failed.');
       }
+    }
+
+    function handleAsk(e) {
+      e.preventDefault();
+      const q = document.getElementById('qfield').value.trim();
+      if (!q) return;
+
+      // inject script tag for JSON-P
+      const script = document.createElement('script');
+      script.src = `${WEBAPP_URL}?question=${encodeURIComponent(q)}&callback=handleResponse`;
+      document.body.appendChild(script);
+    }
+
+    function handleSearch() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      document.querySelectorAll('.entry').forEach(entry => {
+        entry.style.display = entry.innerText.toLowerCase().includes(query) || !query
+          ? 'block'
+          : 'none';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.ask-form').addEventListener('submit', handleAsk);
+      document.getElementById('searchInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleSearch();
+        }
+      });
     });
-  });
   </script>
 </body>
 </html>
